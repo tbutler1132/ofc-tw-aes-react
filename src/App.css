@@ -20,6 +20,14 @@ h1 {
   animation: mythird 7s infinite;
 }
 
+h2 {
+  color: rgb(125, 167, 245);
+}
+
+p {
+  color: rgb(224, 224, 224);
+}
+
 /* Nav */
 
 .nav {
@@ -29,14 +37,17 @@ h1 {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: black;
+  color: white;
+  border-bottom: solid;
+  border-width: 1px;
   z-index: 1;
 }
 
 .nav-links {
   width: 50%;
-  margin: auto;
+  margin-left: 15%;
+  font-size: large;
   margin-top: 1.5%;
   display: flex;
   justify-content: left;
@@ -74,6 +85,10 @@ h1 {
 
 .welcome {
   height: 93vh;
+}
+
+.services > h1 {
+  animation: none;
 }
 
 /* Shop */
@@ -148,11 +163,12 @@ h1 {
   display: flex;
   flex-direction: column;
   padding-bottom: 1%;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./assets/images/soundcloud_banner_sun_3.jpg"); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/vecteezy_futuristic-sci-fi-glowing-hud-element-and-particle_5550030.jpg");
   color: rgb(255, 255, 255);
   align-items: flex-start;
   padding-left: 3%;
+  height: 140vh;
 }
 
 /* About */
@@ -435,10 +451,6 @@ img.profile-pic:after {
 
 th {
   text-decoration: underline;
-}
-
-h2 {
-  color: rgb(125, 167, 245);
 }
 
 .vision {

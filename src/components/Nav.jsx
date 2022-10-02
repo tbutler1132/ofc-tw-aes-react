@@ -8,6 +8,9 @@ function Nav() {
           Home
         </HashLink>
         <HashLink className="nav-link" to="/#shop">
+          Stem Player
+        </HashLink>
+        <HashLink className="nav-link" to="/#shop">
           Shop
         </HashLink>
       </div>
