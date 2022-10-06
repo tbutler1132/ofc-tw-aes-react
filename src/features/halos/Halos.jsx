@@ -1,6 +1,6 @@
 import React from "react"
 
-function HalosContainer() {
+function Halos() {
   return (
     <div>
       Halos
@@ -10,4 +10,4 @@ function HalosContainer() {
   )
 }
 
-export default HalosContainer
+export default Halos
