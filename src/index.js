@@ -2,18 +2,40 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
 import App from "./App"
+import Nav from "./components/Nav"
+import Halos from "./features/halos/Halos"
+import Halo from "./features/halos/Halo"
 import reportWebVitals from "./reportWebVitals"
-import { BrowserRouter } from "react-router-dom"
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
 import { store } from "./app/store"
 import { Provider } from "react-redux"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Nav />,
+    children: [
+      {
+        path: "/halos",
+        element: <Halos />,
+      },
+      {
+        path: "/halos/:id",
+        element: <Halo />,
+      },
+    ],
+  },
+])
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 )
