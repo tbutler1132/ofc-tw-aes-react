@@ -21,7 +21,6 @@ function Nav() {
         .catch((er) => console.log(er))
     }
   }, [createCart, existingCart])
-  if (isLoading || result.isLoading) return <div>Loading...</div>
   return (
     <div className="app">
       <div className="nav">
@@ -29,18 +28,17 @@ function Nav() {
           <Link className="nav-link" to="/halos">
             Home
           </Link>
-          <HashLink className="nav-link" to="/#shop">
-            Stem Player
-          </HashLink>
-          <HashLink className="nav-link" to="/#shop">
+          <Link className="nav-link" to="/shop">
             Shop
-          </HashLink>
+          </Link>
         </div>
         <div className="cart-icon">
           <Badge badgeContent={data?.cart.lines.edges.length} color="primary">
-            <Link to="/cart">
-              <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon>
-            </Link>
+            {isLoading || result.isLoading ? null : (
+              <Link to="/cart">
+                <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon>
+              </Link>
+            )}
           </Badge>
         </div>
       </div>

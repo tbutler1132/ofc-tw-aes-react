@@ -1,15 +1,16 @@
 import React from "react"
-import { useGetProductsQuery } from "../../app/services/Shopify"
+import { useGetCollectionQuery } from "../../app/services/Shopify"
 import { Link } from "react-router-dom"
+import LinearProgress from "@mui/material/LinearProgress"
 
 const cleanUpShopifyId = (originalId) => {
   return originalId.slice(22)
 }
 
 function Halos() {
-  const { data, isLoading } = useGetProductsQuery()
+  const { data, isLoading } = useGetCollectionQuery("283714748625")
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <LinearProgress />
   return (
     <div id="home" className="home">
       {data.map((el) => (
@@ -21,16 +22,18 @@ function Halos() {
 
 function HaloPreview({ halo }) {
   return (
-    <Link to={`/halos/${cleanUpShopifyId(halo.node.id)}`}>
-      <img
-        alt="halo"
-        height="250"
-        width="250"
-        src={halo.node.featuredImage.url}
-      />
-      <h1>{halo.node.title}</h1>
-      <p>{halo.node.description}</p>
-    </Link>
+    <div id="home" className="home">
+      <Link to={`/halos/${cleanUpShopifyId(halo.node.id)}`}>
+        <img
+          alt="halo"
+          height="250"
+          width="250"
+          src={halo.node.featuredImage.url}
+        />
+        <h1>{halo.node.title}</h1>
+        <p>{halo.node.description}</p>
+      </Link>
+    </div>
   )
 }
 

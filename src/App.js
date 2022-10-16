@@ -1,7 +1,5 @@
-import "./App.css"
 import Nav from "./components/Nav"
 import Halos from "./features/halos/Halos"
-import Halo from "./features/halos/Halo"
 
 function App() {
   return (

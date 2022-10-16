@@ -13,6 +13,9 @@ export const shopifyApi = createApi({
     getProduct: builder.query({
       query: (id) => `shopify/product/${id}`,
     }),
+    getCollection: builder.query({
+      query: (id) => `shopify/collection/${id}`,
+    }),
     getCart: builder.query({
       query: (id) => `shopify/cart/${id}`,
       providesTags: ["Cart"],
@@ -47,4 +50,5 @@ export const {
   useGetCartQuery,
   useUpdateCartMutation,
   useRemoveFromCartMutation,
+  useGetCollectionQuery,
 } = shopifyApi

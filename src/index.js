@@ -1,16 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
-import App from "./App"
+import "./App.css"
+import Shop from "./features/shop/Shop"
 import Nav from "./components/Nav"
 import Halos from "./features/halos/Halos"
 import Halo from "./features/halos/Halo"
+import Cart from "./features/cart/Cart"
 import reportWebVitals from "./reportWebVitals"
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { store } from "./app/store"
 import { Provider } from "react-redux"
 
@@ -27,6 +25,14 @@ const router = createBrowserRouter([
         path: "/halos/:id",
         element: <Halo />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
     ],
   },
 ])
@@ -35,7 +41,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <div className="App">
+        <RouterProvider router={router} />
+      </div>
     </Provider>
   </React.StrictMode>
 )
