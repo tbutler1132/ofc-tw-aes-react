@@ -21,7 +21,7 @@ function Halo() {
   let { id } = useParams()
   const existingCart = localStorage.getItem("checkoutId")
   const { data, isLoading } = useGetProductQuery(id)
-  const [updateCart, results] = useUpdateCartMutation()
+  const [updateCart] = useUpdateCartMutation()
   const [buttonDisabled, disableButton] = useState(false)
   const [snackbarMessage, setSnackbarMessage] = useState("")
   const [snackbarOpen, setSnackbarOpen] = useState(false)

@@ -4,26 +4,28 @@ import {
 } from "../../app/services/Shopify"
 import Button from "@mui/material/Button"
 import { Link } from "react-router-dom"
+import LinearProgress from "@mui/material/LinearProgress"
+
 function Cart() {
   const existingCart = localStorage.getItem("checkoutId")
   const { data: cartData, isLoading: cartIsLoading } = useGetCartQuery(
     existingCart.slice(19)
   )
-  const [removeFromCart, cartResults] = useRemoveFromCartMutation()
+  const [removeFromCart] = useRemoveFromCartMutation()
   const removeFromCartHandler = (cartLineId) => {
     removeFromCart({
       cartId: cartData.cart.id.slice(19),
       cartLineId: cartLineId.slice(23),
     })
   }
-  if (cartIsLoading) return <div>Loading...</div>
+  if (cartIsLoading) return <LinearProgress />
   return (
     <div className="cart">
-      {cartData.cart.lines.edges.length > 0 ? (
+      {/* {cartData.cart.lines.edges.length > 0 ? (
         <Button variant="contained" id="clear-cart-button">
           Clear Cart
         </Button>
-      ) : null}
+      ) : null} */}
       <h1>Your Cart</h1>
       {cartData.cart.lines.edges.length > 0 ? (
         <>
@@ -55,7 +57,10 @@ function Cart() {
               ))}
             </tbody>
           </table>
-          <h3>Total: ${cartData.cart.cost.subtotalAmount.amount}</h3>
+          <h3>
+            Total: $
+            {Number(cartData.cart.cost.subtotalAmount.amount).toFixed(2)}
+          </h3>
           <a id="checkout-link" href={cartData.cart.checkoutUrl}>
             <Button id="checkout-button" variant="outlined" color="primary">
               Checkout

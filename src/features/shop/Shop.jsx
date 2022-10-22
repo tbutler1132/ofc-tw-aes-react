@@ -1,13 +1,12 @@
 import { useGetCollectionQuery } from "../../app/services/Shopify"
 import { Link } from "react-router-dom"
 import LinearProgress from "@mui/material/LinearProgress"
-
-const cleanUpShopifyId = (originalId) => {
-  return originalId.slice(22)
-}
+import { isolateId } from "../../utils/utils"
 
 function Shop() {
-  const { data, isLoading } = useGetCollectionQuery("283714781393")
+  const { data, isLoading } = useGetCollectionQuery(
+    process.env.REACT_APP_SOUND_KITS_COLLECTION
+  )
 
   if (isLoading) return <LinearProgress />
   return (
@@ -22,7 +21,7 @@ function Shop() {
 function HaloPreview({ halo }) {
   return (
     <div id="home" className="home">
-      <Link to={`/halos/${cleanUpShopifyId(halo.node.id)}`}>
+      <Link to={`/halos/${isolateId(22, halo.node.id)}`}>
         <img
           alt="halo"
           height="250"
